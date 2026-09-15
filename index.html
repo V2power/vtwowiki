@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="My personal collection of apps, addons and resources for Japanese, music and games.">
+  <meta name="color-scheme" content="dark light">
+  <title>vtwo / personal wiki</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="preferences.js"></script>
+  <script src="translations.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#collection">Skip to collection</a>
+  <header class="header wrap">
+    <a class="brand" href="./" aria-label="vtwo wiki, home"><span class="brand-icon">v.</span> vtwo<span class="brand-divider">/</span><span class="brand-sub">personal wiki</span></a>
+    <div class="header-actions">
+      <button id="language-toggle" class="preference-button" type="button" aria-label="Mudar para português">PT</button>
+      <button id="theme-toggle" class="preference-button" type="button" aria-label="Switch to light mode">☀</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro" aria-labelledby="title">
+      <span class="eyebrow"><span></span> MY DIGITAL LIBRARY</span>
+      <h1 id="title">Things worth<br>keeping close<span class="accent">.</span></h1>
+      <p>Apps, addons and resources. Everything in its place.</p>
+    </section>
+
+    <nav class="categories" aria-label="Categories" id="categories"></nav>
+
+    <section class="collection" id="collection" aria-labelledby="collection-title">
+      <div class="section-heading">
+        <div class="heading-line"><h2 id="collection-title">The whole collection</h2><span id="count" class="count"></span></div>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search the collection…" aria-label="Search the collection"></label>
+      </div>
+      <div class="collection-meta"><p id="description">A selection of tools for everyday life.</p><button id="show-all" hidden>View all <span aria-hidden="true">↗</span></button></div>
+      <p class="sample-note">Sample collection — make it yours with your favorites.</p>
+      <div id="resources" class="resources"></div>
+      <p id="empty" class="empty" hidden>No resources found. Try another search or view the full collection.</p>
+      <p id="result-status" class="sr-only" role="status" aria-live="polite"></p>
+      <noscript><p>Enable JavaScript to view the collection.</p></noscript>
+    </section>
+
+    <section class="elsewhere" aria-labelledby="elsewhere-title">
+      <div><span class="eyebrow">BEYOND THE WIKI</span><h2 id="elsewhere-title">Elsewhere</h2><p>Films, games and stories I follow.</p></div>
+      <div id="social-links" class="social-links"></div>
+    </section>
+  </main>
+  <footer class="footer wrap"><span>vtwo <span class="muted">/ made to browse and share.</span></span><a href="#title">Back to top ↑</a></footer>
+</body>
+</html>
