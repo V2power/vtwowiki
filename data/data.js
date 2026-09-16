@@ -23,10 +23,18 @@ const resources = [
 ];
 
 // Troque as URLs iniciais pelas URLs dos seus perfis pessoais.
+const headerLinks = [
+  { name: "YouTube", url: "https://www.youtube.com/@V2power%E3%83%84", icon: "assets/icons/brands/youtube.svg" },
+  { name: "Instagram", url: "https://www.instagram.com/", icon: "assets/icons/brands/instagram.svg" },
+  { name: "GitHub", url: "https://github.com/V2power", icon: "assets/icons/brands/github.svg" },
+];
+
 const socialLinks = [
   { name: "Letterboxd", url: "https://letterboxd.com/V2power/", icon: "assets/icons/letterboxd.ico" },
   { name: "Backloggd", url: "https://backloggd.com/u/V2power/", icon: "assets/icons/backloggd.ico" },
   { name: "RetroAchievements", url: "https://retroachievements.org/user/V2power", icon: "assets/icons/retroachievements.png" },
   { name: "Exophase", url: "https://www.exophase.com/user/V2power/", icon: "assets/icons/exophase.ico" },
   { name: "AniList", url: "https://anilist.co/user/V2power/", icon: "assets/icons/anilist.png" },
+  { name: "Last.fm", url: "https://www.last.fm/user/Victivus", icon: "assets/icons/lastfm.ico" },
+  { name: "VNDB", url: "https://vndb.org/u300042", icon: "assets/icons/vndb.ico" },
 ];

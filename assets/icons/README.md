@@ -7,3 +7,5 @@ Favicons originais dos serviços, mantidos localmente para não depender de carr
 - `backloggd.ico`: https://backloggd.com/favicon.ico
 - `retroachievements.png`: https://raw.githubusercontent.com/RetroAchievements/RAWeb/master/public/favicon.png
 - `exophase.ico`: https://www.exophase.com/favicon.ico
+- `lastfm.ico`: https://www.last.fm/static/images/favicon.702b239b6194.ico
+- `vndb.ico`: https://vndb.org/favicon.ico

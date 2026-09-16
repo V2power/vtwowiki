@@ -26,6 +26,19 @@ function applyTheme() {
 }
 
 function updateHeader() {
+  const navigation = document.querySelector("#header-links");
+  navigation.setAttribute("aria-label", language === "pt" ? "Links principais" : "Main links");
+  navigation.replaceChildren();
+  headerLinks.forEach(item => {
+    const link = externalLink(item.url, "header-link");
+    const icon = element("span", "header-brand-icon");
+    icon.style.setProperty("--brand-icon", `url("${new URL(item.icon, siteRoot).href}")`);
+    icon.setAttribute("aria-hidden", "true");
+    link.append(icon);
+    link.title = item.name;
+    link.setAttribute("aria-label", `${item.name} (${messages[language].newTab})`);
+    navigation.append(link);
+  });
   document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
   document.querySelector(".brand-sub").textContent = language === "pt" ? "wiki pessoal" : "personal wiki";
   document.querySelector(".brand").setAttribute("aria-label", messages[language].home);
