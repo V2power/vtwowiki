@@ -19,3 +19,5 @@ O conteúdo está em construção e acompanha o que vou descobrindo e experiment
 ---
 
 Disponível em inglês e português, com temas claro e escuro.
+
+Para configurar o cartão de música do Last.fm com a chave protegida no Cloudflare Workers, veja [o guia de configuração](docs/LASTFM.md).
