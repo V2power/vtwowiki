@@ -34,7 +34,7 @@ const englishDescriptions = {
   PCGamingWiki: "Fixes and tweaks to get more out of your PC games.",
 };
 function descriptionFor(item) {
-  return language === "en" ? englishDescriptions[item.id || item.name] || item.description : item.description;
+  return language === "en" ? englishDescriptions[item.id] || englishDescriptions[item.name] || item.description : item.description;
 }
 function categoryName(category) {
   const portuguese = { japanese: "Japonês", music: "Música", games: "Jogos" };

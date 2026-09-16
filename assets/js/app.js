@@ -4,21 +4,6 @@ const resourceContainer = document.querySelector("#resources");
 const search = document.querySelector("#search");
 let selectedCategory = "all";
 
-function element(tag, className, text) {
-  const node = document.createElement(tag);
-  node.className = className;
-  if (text) node.textContent = text;
-  return node;
-}
-
-function externalLink(url, className) {
-  const link = element("a", className);
-  link.href = url;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  return link;
-}
-
 function renderCategories() {
 categoryContainer.replaceChildren();
 categories.forEach(category => {
@@ -62,13 +47,14 @@ function renderResources() {
   resourceContainer.replaceChildren();
   filtered.forEach(item => {
     const category = categories.find(category => category.id === item.category);
-    const card = externalLink(item.url, "resource");
-    card.setAttribute("aria-label", `${item.name} — ${resourceType(item)} (${messages[language].newTab})`);
+    const card = element("a", "resource");
+    card.href = articleUrl(item);
+    card.setAttribute("aria-label", `${item.name} — ${language === "pt" ? "Ler resenha" : "Read review"}`);
     const icon = element("span", `resource-icon ${category.color}`, item.icon);
     icon.setAttribute("aria-hidden", "true");
     const body = element("div", "resource-body");
     const heading = element("div", "resource-heading");
-    heading.append(element("h3", "", item.name), element("span", "external-arrow", "↗"));
+    heading.append(element("h3", "", item.name), element("span", "external-arrow", "→"));
     body.append(heading, element("p", "", descriptionFor(item)));
     const metadata = element("div", "metadata");
     metadata.append(element("span", "", categoryName(category)), element("span", "metadata-dot", "·"), element("span", "", resourceType(item)));
@@ -83,8 +69,11 @@ document.querySelector("#social-links").replaceChildren();
 socialLinks.forEach(item => {
   const link = externalLink(item.url, "social-link");
   link.setAttribute("aria-label", `${item.name} (${messages[language].newTab})`);
-  const icon = element("span", "social-icon", item.icon);
-  icon.style.color = item.color;
+  const icon = element("img", "social-icon");
+  icon.src = item.icon;
+  icon.alt = ""; // O nome do site já está no texto do link.
+  icon.width = 20;
+  icon.height = 20;
   icon.setAttribute("aria-hidden", "true");
   link.append(icon, element("span", "", item.name), element("span", "social-arrow", "↗"));
   document.querySelector("#social-links").append(link);
@@ -116,33 +105,12 @@ function applyLanguage() {
   search.setAttribute("aria-label", text.search);
   categoryContainer.setAttribute("aria-label", text.categories);
   document.querySelector(".brand").setAttribute("aria-label", text.home);
-  const button = document.querySelector("#language-toggle");
-  button.textContent = language === "pt" ? "EN" : "PT";
-  button.setAttribute("aria-label", language === "pt" ? "Switch to English" : "Mudar para português");
-  button.title = button.getAttribute("aria-label");
-  button.lang = language === "pt" ? "en" : "pt-BR";
+  updateHeader();
   renderCategories();
   renderResources();
   renderSocialLinks();
   applyTheme();
 }
 
-function applyTheme() {
-  document.documentElement.dataset.theme = theme;
-  const button = document.querySelector("#theme-toggle");
-  button.textContent = theme === "dark" ? "☀" : "☾";
-  button.setAttribute("aria-label", messages[language][theme === "dark" ? "light" : "dark"]);
-  button.title = button.getAttribute("aria-label");
-}
-
-document.querySelector("#language-toggle").addEventListener("click", () => {
-  language = language === "pt" ? "en" : "pt";
-  savePreference("wiki-language", language);
-  applyLanguage();
-});
-document.querySelector("#theme-toggle").addEventListener("click", () => {
-  theme = theme === "dark" ? "light" : "dark";
-  savePreference("wiki-theme", theme);
-  applyTheme();
-});
+setupPreferences(applyLanguage);
 applyLanguage();

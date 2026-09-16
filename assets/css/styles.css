@@ -37,7 +37,6 @@
 [data-theme="light"] .metadata { color: #675479; }
 [data-theme="light"] .resource { border-color: var(--outline); }
 [data-theme="light"] .brand-icon, [data-theme="light"] .skip-link { color: #fff; }
-[data-theme="light"] .social-icon { color: #66577d !important; }
 @media (max-width: 420px) {
   .brand-sub, .brand-divider { display: none; }
   .header-actions { gap: 8px; }
@@ -105,7 +104,7 @@ h3 { font-size: 16px; font-weight: 600; line-height: 1.4; margin: 0; overflow-wr
 .social-links { display: flex; flex-wrap: wrap; gap: 10px; }
 .social-link { border: 1px solid var(--outline); border-radius: 12px; padding: 10px 13px; display: flex; align-items: center; gap: 9px; font-size: 14px; transition: background .18s; }
 .social-link:hover { background: var(--surface-hover); }
-.social-icon { font-weight: 700; }
+.social-icon { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
 .social-arrow { color: #85838f; margin-left: 6px; }
 .footer { border-top: 1px solid var(--outline); display: flex; justify-content: space-between; gap: 20px; padding-block: 24px; font-size: 12px; }
 .muted, .footer a { color: var(--muted); }

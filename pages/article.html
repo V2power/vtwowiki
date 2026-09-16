@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal notes, favorite addons and useful links.">
+  <meta name="color-scheme" content="dark light">
+  <title>Notes / vtwo</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <script src="../assets/js/preferences.js"></script>
+  <script src="../data/translations.js" defer></script>
+  <script src="../data/data.js" defer></script>
+  <script src="../assets/js/ui.js" defer></script>
+  <script src="../assets/vendor/marked.js" defer></script>
+  <script src="../assets/vendor/purify.min.js" defer></script>
+  <script src="../assets/js/markdown.js" defer></script>
+  <script src="../assets/js/article.js" defer></script>
+</head>
+<body data-root="../">
+  <a class="skip-link" href="#article-content">Skip to article</a>
+  <header class="header wrap">
+    <a class="brand" href="../" aria-label="vtwo wiki, home"><span class="brand-icon">v.</span> vtwo<span class="brand-divider">/</span><span class="brand-sub">personal wiki</span></a>
+    <div class="header-actions">
+      <button id="language-toggle" class="preference-button" type="button" aria-label="Mudar para português">PT</button>
+      <button id="theme-toggle" class="preference-button" type="button" aria-label="Switch to light mode">☀</button>
+    </div>
+  </header>
+  <main class="wrap article-layout">
+    <aside class="article-sidebar">
+      <a id="back-link" class="back-link" href="../">← Collection</a>
+      <nav id="related" aria-label="In this category"></nav>
+    </aside>
+    <div class="article-main">
+      <header class="article-header">
+        <p id="article-category" class="eyebrow"></p>
+        <h1 id="article-title">Notes</h1>
+        <p id="article-description" class="muted"></p>
+        <a id="official-link" class="official-link" hidden target="_blank" rel="noopener noreferrer">Official website ↗</a>
+      </header>
+      <p id="article-status" class="article-status" role="status">Loading notes…</p>
+      <button id="retry" class="preference-button" hidden type="button">Try again</button>
+      <article id="article-content" class="markdown-body" tabindex="-1" hidden></article>
+      <noscript><p>Enable JavaScript to read this article.</p></noscript>
+    </div>
+    <aside class="article-index" hidden>
+      <nav aria-labelledby="toc-title">
+        <h2 id="toc-title">On this page</h2>
+        <ol id="toc"></ol>
+      </nav>
+    </aside>
+  </main>
+  <footer class="footer wrap"><span>vtwo <span class="muted" id="article-footer">/ personal notes.</span></span><a id="top-link" href="#article-title">Back to top ↑</a></footer>
+</body>
+</html>
