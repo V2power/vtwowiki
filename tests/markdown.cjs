@@ -40,9 +40,9 @@ async function test() {
   d.querySelector('#theme-toggle').click();
   assert.equal(d.documentElement.dataset.theme, 'light');
 
-  run(`renderMarkdown('## Repetido\\n\\n## Repetido\\n\\n![test](images/test.png)\\n\\n<script>alert(1)</script><img src="x" onerror="alert(1)"><a href="javascript:alert(1)">bad</a><iframe src="x"></iframe>', new URL('content/anki.pt.md', siteRoot), document.querySelector('#article-content'))`);
+  run(`renderMarkdown('## Repetido\\n\\n## Repetido\\n\\n![test](images/test.png)\\n\\n<script>alert(1)</script><img src="x" onerror="alert(1)"><a href="javascript:alert(1)">bad</a><iframe src="x"></iframe>', new URL('content/anki/anki.pt.md', siteRoot), document.querySelector('#article-content'))`);
   assert.ok(d.getElementById('section-repetido-2'));
-  assert.equal(d.querySelector('.markdown-body img').src, base + 'content/images/test.png');
+  assert.equal(d.querySelector('.markdown-body img').src, base + 'content/anki/images/test.png');
   assert.equal(d.querySelectorAll('.markdown-body script,.markdown-body iframe,.markdown-body [onerror],.markdown-body a[href^="javascript:"]').length, 0);
 
   const home = setup('index.html'); home.start();
@@ -64,7 +64,7 @@ async function test() {
   broken.start(); await tick();
   assert.equal(broken.d.querySelector('#retry').hidden, false);
   const fallback = setup('pages/article.html');
-  fallback.run('resources[0].markdown = {pt: "content/anki.pt.md"}');
+  fallback.run('resources[0].markdown = {pt: "content/anki/anki.pt.md"}');
   fallback.start(); await tick();
   assert.equal(fallback.d.querySelector('#article-content').lang, 'pt-BR');
   assert.match(fallback.d.querySelector('#article-status').textContent, /Portuguese only/);

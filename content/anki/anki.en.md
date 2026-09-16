@@ -69,9 +69,9 @@ _Replace this section with your personal review._
 ## Useful links
 
 - [Official website](https://apps.ankiweb.net/)
-- [My notes on Yomitan](yomitan.en.md)
+- [My notes on Yomitan](../yomitan/yomitan.en.md)
 - [Back to the card template](#my-card-template)
 
 ---
 
-**Editing tip:** to include an image, save it in `content/images/` and use `![Image description](images/name.png)`.
+**Editing tip:** to include an image, save it in `content/anki/images/` and use `![Image description](images/name.png)`.

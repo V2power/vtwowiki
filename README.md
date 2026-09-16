@@ -11,7 +11,13 @@ vtwowiki/
 ├── README.md
 ├── pages/
 │   └── article.html       # Página de leitura das resenhas
-├── content/               # Suas resenhas em Markdown
+├── content/               # Uma pasta por recurso
+│   ├── anki/
+│   │   ├── anki.en.md
+│   │   └── anki.pt.md
+│   └── yomitan/
+│       ├── yomitan.en.md
+│       └── yomitan.pt.md
 ├── data/
 │   ├── data.js            # Categorias, recursos, caminhos e perfis
 │   └── translations.js    # Traduções da interface
@@ -23,7 +29,7 @@ vtwowiki/
 └── tests/                 # Verificações de desenvolvimento
 ```
 
-Para editar o conteúdo, concentre-se em **`content/`** e **`data/`**. Os caminhos em `data/data.js` continuam relativos à raiz do projeto, por exemplo `content/anki.pt.md`.
+Para editar o conteúdo, concentre-se em **`content/`** e **`data/`**. Os caminhos em `data/data.js` continuam relativos à raiz do projeto, por exemplo `content/anki/anki.pt.md`.
 
 ## Abrir
 
@@ -51,7 +57,7 @@ Copie este objeto para a lista `resources` em `data/data.js`, separando os itens
 {
   id: "nome-do-programa", // único, sem espaços
   name: "Nome do programa",
-  markdown: { en: "content/nome-do-programa.en.md", pt: "content/nome-do-programa.pt.md" },
+  markdown: { en: "content/nome-do-programa/nome-do-programa.en.md", pt: "content/nome-do-programa/nome-do-programa.pt.md" },
   category: "japanese", // japanese, music ou games
   type: "Addon",
   description: "Uma descrição curta do que você usa e por quê.",
@@ -97,24 +103,24 @@ Cada cartão abre `pages/article.html?id=ID-DO-RECURSO`. A página carrega o arq
 
 ### Editar o Anki
 
-- `content/anki.pt.md`: resenha em português.
-- `content/anki.en.md`: resenha em inglês.
+- `content/anki/anki.pt.md`: resenha em português.
+- `content/anki/anki.en.md`: resenha em inglês.
 
 As duas páginas são modelos editáveis, não relatos reais do seu uso. As demais ferramentas têm modelos iniciais mais curtos. O nome da ferramenta já aparece no cabeçalho: comece o arquivo com um parágrafo ou títulos `##`.
 
 ### Criar uma resenha
 
-1. Crie um arquivo dentro de `content/`, por exemplo `minha-ferramenta.pt.md`.
+1. Crie uma pasta dentro de `content/` para o recurso e adicione o arquivo, por exemplo `content/minha-ferramenta/minha-ferramenta.pt.md`.
 2. Adicione o recurso em `data/data.js`, com `id` único e o caminho em `markdown`.
 3. Escreva seu texto, salve e atualize a página. Envie os arquivos ao GitHub para atualizar a versão publicada.
 
 Se você escrever apenas em português, use:
 
 ```js
-markdown: { pt: "content/minha-ferramenta.pt.md" },
+markdown: { pt: "content/minha-ferramenta/minha-ferramenta.pt.md" },
 ```
 
-O texto em português também será exibido na interface em inglês, com um aviso de que não há tradução. A tradução não é automática. Para um texto único compartilhado entre os dois idiomas, também é possível usar `markdown: "content/minha-ferramenta.md"`.
+O texto em português também será exibido na interface em inglês, com um aviso de que não há tradução. A tradução não é automática. Para um texto único compartilhado entre os dois idiomas, também é possível usar `markdown: "content/minha-ferramenta/minha-ferramenta.md"`.
 
 ### Formatação disponível
 
@@ -133,12 +139,12 @@ Os caminhos são relativos ao arquivo Markdown:
 ```md
 ![Meu cartão do Anki](images/meu-cartao.png)
 
-[Minhas notas sobre Yomitan](yomitan.pt.md)
+[Minhas notas sobre Yomitan](../yomitan/yomitan.pt.md)
 
 [Ir para uma seção](#addons-que-utilizo)
 ```
 
-Nesse exemplo, coloque a imagem em `content/images/meu-cartao.png`. Links para arquivos `.md` cadastrados em `data/data.js` abrem a página de leitura automaticamente. Outros arquivos são links normais. As âncoras dos títulos ignoram acentos: `## Addons que utilizo` vira `#addons-que-utilizo` dentro do Markdown (na URL da página, `#section-addons-que-utilizo`).
+Nesse exemplo, coloque a imagem em `content/anki/images/meu-cartao.png`. Links para arquivos `.md` cadastrados em `data/data.js` abrem a página de leitura automaticamente. Outros arquivos são links normais. As âncoras dos títulos ignoram acentos: `## Addons que utilizo` vira `#addons-que-utilizo` dentro do Markdown (na URL da página, `#section-addons-que-utilizo`).
 
 ### Arquivos do sistema de leitura
 

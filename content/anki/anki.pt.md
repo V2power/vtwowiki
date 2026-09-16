@@ -69,9 +69,9 @@ _Substitua este trecho pela sua avaliação pessoal._
 ## Links úteis
 
 - [Site oficial](https://apps.ankiweb.net/)
-- [Minhas notas sobre o Yomitan](yomitan.pt.md)
+- [Minhas notas sobre o Yomitan](../yomitan/yomitan.pt.md)
 - [Voltar ao modelo de cartão](#meu-modelo-de-cartao)
 
 ---
 
-**Dica de edição:** para incluir uma imagem, salve-a em `content/images/` e use `![Descrição da imagem](images/nome.png)`.
+**Dica de edição:** para incluir uma imagem, salve-a em `content/anki/images/` e use `![Descrição da imagem](images/nome.png)`.
