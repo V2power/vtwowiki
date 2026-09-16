@@ -25,7 +25,7 @@ const resources = [
 // Troque as URLs iniciais pelas URLs dos seus perfis pessoais.
 const headerLinks = [
   { name: "YouTube", url: "https://www.youtube.com/@V2power%E3%83%84", icon: "assets/icons/brands/youtube.svg" },
-  { name: "Instagram", url: "https://www.instagram.com/", icon: "assets/icons/brands/instagram.svg" },
+  { name: "Instagram", url: "https://www.instagram.com/vitor.rodriguesv2", icon: "assets/icons/brands/instagram.svg" },
   { name: "GitHub", url: "https://github.com/V2power", icon: "assets/icons/brands/github.svg" },
 ];
 

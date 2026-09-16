@@ -1,5 +1,6 @@
 # Guia de manutenção pessoal (somente local)
 /docs/LOCAL-GUIDE.md
+/docs/LASTFM.md
 .dev.vars*
 .env*
 .wrangler/

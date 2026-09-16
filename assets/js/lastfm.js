@@ -25,13 +25,33 @@
     status.className = "lastfm-status";
     const track = state === "ready" ? result?.track : null;
     card.classList.toggle("is-playing", !!track?.nowPlaying);
+    if (track) {
+      const backdrop = document.createElement("span");
+      backdrop.className = "lastfm-backdrop";
+      backdrop.setAttribute("aria-hidden", "true");
+      for (let bar = 0; bar < 14; bar++) {
+        const line = document.createElement("i");
+        line.style.setProperty("--bar-height", `${30 + (bar * 23 % 65)}%`);
+        line.style.setProperty("--bar-duration", `${2 + (bar % 5) * .35}s`);
+        line.style.setProperty("--bar-delay", `${-bar * .37}s`);
+        backdrop.append(line);
+      }
+      card.append(backdrop);
+    }
     status.textContent = `Last.fm · ${track ? (track.nowPlaying ? text.playing : text.recent) : text[state === "ready" ? "empty" : state]}`;
+    if (track?.nowPlaying) {
+      const equalizer = document.createElement("span");
+      equalizer.className = "lastfm-equalizer";
+      equalizer.setAttribute("aria-hidden", "true");
+      for (let bar = 0; bar < 3; bar++) equalizer.append(document.createElement("i"));
+      status.prepend(equalizer);
+    }
     body.append(status);
     if (track) {
       const cover = safeUrl(track.cover);
       if (cover) {
         const img = document.createElement("img");
-        img.src = cover; img.alt = ""; img.width = 56; img.height = 56;
+        img.src = cover; img.alt = ""; img.width = 88; img.height = 88;
         img.addEventListener("error", () => img.remove(), { once: true });
         card.append(img);
       }
@@ -39,9 +59,11 @@
       const title = document.createElement(href ? "a" : "span");
       title.className = "lastfm-track";
       title.textContent = track.name;
+      title.title = track.name;
       if (href) { title.href = href; title.target = "_blank"; title.rel = "noopener noreferrer"; }
       const artist = document.createElement("span");
       artist.className = "lastfm-artist"; artist.textContent = track.artist;
+      artist.title = track.artist;
       body.append(title, artist);
       if (!track.nowPlaying && Number.isFinite(track.playedAt) && track.playedAt > 0) {
         const time = document.createElement("time");

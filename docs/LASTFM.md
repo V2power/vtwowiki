@@ -34,7 +34,7 @@ O último comando pede a chave interativamente. O arquivo `wrangler.jsonc` já d
 
 ## Comportamento
 
-- O cartão fica abaixo da introdução. Enquanto a URL estiver vazia, permanece oculto.
+- O cartão fica à direita da introdução no desktop e abaixo do texto no celular. As barrinhas do status e um equalizador translúcido atrás das informações animam enquanto toca. Por escolha visual explícita, o movimento do cartão permanece ativo mesmo com movimento reduzido. Enquanto a URL estiver vazia, permanece oculto.
 - Consulta a cada 60 segundos somente com a aba visível; ao voltar, consulta se a última tentativa tiver mais de um minuto.
 - O Worker guarda resultados por 30 segundos no cache de cada data center. Isso reduz consultas ao Last.fm, mas não elimina as requisições contabilizadas pelo Worker.
 - Falhas não mantêm um status antigo de “ouvindo agora”. O cartão mostra indisponibilidade e tenta novamente no próximo intervalo.
@@ -42,6 +42,8 @@ O último comando pede a chave interativamente. O arquivo `wrangler.jsonc` já d
 - Não há banco de dados, KV ou agendamento. O status depende de seu player enviar “now playing” ao Last.fm.
 
 ## Verificações locais
+
+Para testar a música real e a capa localmente, execute `node scripts/preview.mjs` na raiz e abra `http://127.0.0.1:4174`. Esse servidor encaminha a consulta ao Worker público pelo próprio servidor, evitando o bloqueio CORS do navegador. Nenhuma chave é usada localmente. Um servidor estático comum continua sujeito à origem permitida no Worker.
 
 ```sh
 node --test tests/lastfm.mjs

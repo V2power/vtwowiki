@@ -58,21 +58,39 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .brand-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; background: var(--primary); color: #292039; font-size: 24px; }
 .brand-divider { color: #62616d; font-weight: 400; }
 .brand-sub, .header-note { color: var(--muted); font-size: 14px; font-weight: 400; }
-.intro { padding: 56px 0 36px; }
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) 360px; column-gap: 40px; padding: 56px 0 36px; }
+.intro > .eyebrow, .intro > h1, .intro > p { grid-column: 1; }
 .eyebrow { font-size: 12px; letter-spacing: 2px; font-weight: 650; color: var(--muted); }
 .eyebrow > span { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--primary); margin-right: 8px; }
 h1 { font-size: clamp(36px, 4.6vw, 54px); line-height: 1.13; letter-spacing: -2px; font-weight: 600; margin: 18px 0; }
 .accent { color: var(--primary); }
 .intro p { color: var(--muted); margin: 0; }
 .categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.lastfm { display: flex; align-items: center; gap: 14px; max-width: 480px; padding: 16px 18px; margin: 0 0 28px; border: 1px solid var(--outline); border-radius: 16px; background: var(--surface); }
-.lastfm > img { border-radius: 10px; object-fit: cover; flex-shrink: 0; }
-.lastfm-body { display: flex; flex-direction: column; min-width: 0; }
-.lastfm-status, .lastfm time { font-size: 12px; color: var(--muted); }
+.lastfm { grid-column: 2; grid-row: 1 / 4; align-self: center; display: flex; align-items: center; gap: 16px; width: 100%; min-width: 0; padding: 18px; border: 1px solid var(--outline); border-radius: 12px; background: var(--surface); }
+.lastfm { position: relative; isolation: isolate; overflow: hidden; }
+.lastfm > img { position: relative; z-index: 1; width: 88px; height: 88px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+.lastfm-body { position: relative; z-index: 1; }
+.lastfm-backdrop { position: absolute; z-index: 0; inset: 12px 12px 12px 120px; display: flex; align-items: center; gap: 5px; opacity: .1; color: var(--primary); pointer-events: none; mask-image: linear-gradient(to right, transparent, #000 25%, #000); }
+.lastfm-backdrop i { flex: 1; min-width: 0; height: var(--bar-height); border-radius: 4px; background: currentColor; transform: scaleY(.5); }
+.lastfm.is-playing .lastfm-backdrop i { animation: lastfm-ambient var(--bar-duration) ease-in-out var(--bar-delay) infinite alternate; }
+@keyframes lastfm-ambient { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
+.lastfm-body { display: flex; flex-direction: column; min-width: 0; flex: 1; line-height: 1.5; }
+.lastfm-status, .lastfm time { font-size: 11px; color: var(--muted); }
+.lastfm-status { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
 .lastfm.is-playing .lastfm-status { color: var(--primary); }
-.lastfm-track { font-weight: 600; overflow-wrap: anywhere; }
+.lastfm-track { font-size: 15px; font-weight: 600; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 a.lastfm-track:hover { text-decoration: underline; }
-.lastfm-artist { font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
+.lastfm-artist { font-size: 13px; color: var(--muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.lastfm-equalizer { display: inline-flex; align-items: center; gap: 2px; height: 12px; flex-shrink: 0; }
+.lastfm-equalizer i { width: 2px; height: 10px; border-radius: 2px; background: currentColor; transform: scaleY(.4); animation: lastfm-beat 1.2s ease-in-out infinite alternate; }
+.lastfm-equalizer i:nth-child(2) { animation-delay: -.7s; animation-duration: .9s; }
+.lastfm-equalizer i:nth-child(3) { animation-delay: -.3s; animation-duration: 1.1s; }
+@keyframes lastfm-beat { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+@media (max-width: 860px) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .lastfm { grid-column: 1; grid-row: auto; max-width: 360px; margin-top: 22px; }
+}
+/* Movimento suave no cartão solicitado explicitamente, inclusive na prévia com movimento reduzido. */
 .category { text-align: left; border: 1px solid transparent; padding: 24px; border-radius: var(--radius); transition: background .18s, transform .18s, border-color .18s; }
 .purple { background: #292435; color: #d1bdfa; }
 .green { background: #202f2b; color: #aad8bd; }
